@@ -256,6 +256,26 @@ Load all test files first."
   (org-test-load)
   (ert "\\(org\\|ob\\)"))
 
+(defun org-test-get-before-after (id)
+  "Returns a cons containing before and after blocks (of text) to
++test in a temporary buffer.
++Each block should be in a seperate sub heading in the example org
++file. The argument ID is used in conjunction with =org-test-at-id
++to identify the test data"
+  (let ((temp) (before) (after))
+    (org-test-at-id id
+      (error "here")
+      (outline-next-visible-heading 1)
+      (forward-line)
+      (setq temp (point))
+      (org-end-of-subtree t t)
+      (setq before (buffer-substring-no-properties temp (point)))
+      (forward-line)
+      (setq temp (point))
+      (org-end-of-subtree t t)
+      (setq after (buffer-substring-no-properties temp (point)))
+      (setq temp (cons before after))) temp ))
+
 (provide 'org-test)
 
 ;;; org-test.el ends here
