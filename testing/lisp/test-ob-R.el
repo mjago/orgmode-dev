@@ -20,9 +20,13 @@
 (require 'ob-R)
 
 (ert-deftest test-ob-R/simple-session ()
-  (org-test-with-temp-text
-      "#+begin_src R :session R\n  paste(\"Yep!\")\n#+end_src\n"
-    (should (string= "Yep!" (org-babel-execute-src-block)))))
+  (if (and (featurep 'ess)
+	   (eql 0 (shell-command org-babel-R-command)))
+      (org-test-with-temp-text
+	  "#+begin_src R :session R\n  paste(\"Yep!\")\n#+end_src\n"
+	(should (string= "Yep!" (org-babel-execute-src-block))))
+    (message "NOTE: =test-ob-R/simple-session= NOT run!
+ R and ESS are required to run =test-ob-R/simple-session=")))
 
 (provide 'test-ob-R)
 
