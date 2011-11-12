@@ -7,23 +7,23 @@
   :END:
 
 #+source: noweb-example
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (message "expanded")
 #+end_src
 
-#+begin_src emacs-lisp :noweb yes
+#+begin_src emacs-lisp :noweb yes :results silent
   ;; noweb-yes-start
   <<noweb-example>>
   ;; noweb-yes-end
 #+end_src
 
-#+begin_src emacs-lisp :noweb no
+#+begin_src emacs-lisp :noweb no :results silent
   ;; noweb-no-start
   <<noweb-example>>
   ;; noweb-no-end
 #+end_src
 
-#+begin_src emacs-lisp :noweb tangle
+#+begin_src emacs-lisp :noweb tangle :results silent
   ;; noweb-tangle-start
   <<noweb-example>>
   ;; noweb-tangle-end
@@ -35,12 +35,9 @@
   :var:      prop=(+ 2 2)
   :END:
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   prop
 #+end_src
-
-#+results:
-: 4
 
 * excessive id links on tangling
   :PROPERTIES:
@@ -48,7 +45,7 @@
   :END:
 
 ** no, don't give me an ID
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp :tangle no :results silent
   (message "not to be tangled")
 #+end_src
 
@@ -56,7 +53,7 @@
    :PROPERTIES:
    :ID:       ae7b55ca-9ef2-4d30-bd48-da30e35fd0f3
    :END:
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp :tangle no :results silent
   (message "for tangling")
 #+end_src
 * simple variable resolution
@@ -65,16 +62,13 @@
   :END:
 
 #+source: four
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (list 1 2 3 4)
 #+end_src
 
-#+begin_src emacs-lisp :var four=four
+#+begin_src emacs-lisp :var four=four :results silent
   (length four)
 #+end_src
-
-#+results:
-: 4
 
 * multi-line header arguments
   :PROPERTIES:
@@ -82,18 +76,9 @@
   :END:
 
 #+headers: :var letters='(a b c d e f g)
-#+begin_src emacs-lisp :var numbers='(1 2 3 4 5 6 7)
+#+begin_src emacs-lisp :var numbers='(1 2 3 4 5 6 7) :results silent
   (map 'list #'list numbers letters)
 #+end_src
-
-#+results:
-| 1 | a |
-| 2 | b |
-| 3 | c |
-| 4 | d |
-| 5 | e |
-| 6 | f |
-| 7 | g |
 
 * simple named code block
   :PROPERTIES:
@@ -101,15 +86,9 @@
   :END:
 
 #+source: i-have-a-name
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   42
 #+end_src
-
-#+results: 
-: 42
-
-#+results: i-have-a-name
-: 42
 
 * Pascal's Triangle -- export test
   :PROPERTIES:
@@ -117,7 +96,7 @@
   :END:
 
 #+source: pascals-triangle
-#+begin_src emacs-lisp :var n=5 :exports both
+#+begin_src emacs-lisp :var n=5 :exports both :results silent
   (defun pascals-triangle (n)
     (if (= n 0)
         (list (list 1))
@@ -137,7 +116,7 @@
   :END:
 
 #+source: take-sqrt
-#+begin_src emacs-lisp :var n=9
+#+begin_src emacs-lisp :var n=9 :results silent
   (sqrt n)
 #+end_src
 
@@ -160,7 +139,7 @@ call_echo("testing")
 call_concat(1,2,3)
 
 #+source: concat
-#+begin_src emacs-lisp :var a=0 :var b=0 :var c=0
+#+begin_src emacs-lisp :var a=0 :var b=0 :var c=0 :results silent
   (format "%S%S%S" a b c)
 #+end_src
 
@@ -170,7 +149,7 @@ call_concat(1,2,3)
   :END:
 
 #+source: double
-#+begin_src emacs-lisp :var it=0
+#+begin_src emacs-lisp :var it=0 :results silent
   (* 2 it)
 #+end_src
 
@@ -214,15 +193,11 @@ src_sh{echo 3} Here is one at the beginning of a line.
   :PROPERTIES:
   :ID:       5daa4d03-e3ea-46b7-b093-62c1b7632df3
   :END:
-#+results: a-list
-- a
-- b
-- c
 
-#+begin_src emacs-lisp :results wrap :exports both
+#+begin_src emacs-lisp :results wrap :exports both :results silent
     "code block results"
 #+end_src
-#+begin_src emacs-lisp :var lst=a-list :results list
+#+begin_src emacs-lisp :var lst=a-list :results list silent
   (reverse lst)
 #+end_src
 * using the =:noweb-ref= header argument
@@ -259,7 +234,7 @@ src_sh{echo 3} Here is one at the beginning of a line.
   :results:  silent
   :END:
 
-#+begin_src emacs-lisp :var text=d4faa7b3-072b-4dcf-813c-dd7141c633f3
+#+begin_src emacs-lisp :var text=d4faa7b3-072b-4dcf-813c-dd7141c633f3 :results silent
   (length text)
 #+end_src
 
@@ -294,17 +269,11 @@ src_sh{echo 2} blocks on the src_emacs-lisp{"same"} line
   :ID:       a73a2ab6-b8b2-4c0e-ae7f-23ad14eab7bc
   :END:
 
-#+begin_src sh :results scalar
+#+begin_src sh :results scalar silent
   echo "[[file:./cv.cls]]"
 #+end_src
 
-#+results:
-: [[file:./cv.cls]]
-
-#+begin_src sh :results raw scalar
+#+begin_src sh :results raw scalar silent
    echo "[[file:./cv.cls]]"
 #+end_src
-
-#+results:
-[[file:./cv.cls]]
 

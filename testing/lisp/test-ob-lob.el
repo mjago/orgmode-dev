@@ -64,7 +64,9 @@
     (should (string= "testing" (org-babel-lob-execute
 				(org-babel-lob-get-info))))
     (forward-line 1)
-    (should (string= "123" (org-babel-lob-execute (org-babel-lob-get-info))))))
+    (should (string= "123" (org-babel-lob-execute
+					    (org-babel-lob-get-info))))
+    ))
 
 (ert-deftest test-ob-lob/export-lob-lines ()
   "Test the export of a variety of library babel call lines."
