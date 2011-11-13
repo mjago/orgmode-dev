@@ -149,8 +149,8 @@ call_concat(1,2,3)
   :END:
 
 #+source: double
-#+begin_src emacs-lisp :var it=0 :results silent
-  (* 2 it)
+#+begin_src emacs-lisp :var i=0 
+  (* 2 i)                            ;;;;;;;;;;;;;;; EXPORTS AS 2 i 
 #+end_src
 
 The following exports as a normal call line
