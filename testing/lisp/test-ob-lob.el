@@ -29,40 +29,40 @@
   (should (< 0 (org-babel-lob-ingest
 		(expand-file-name "babel.org" org-test-example-dir)))))
 
-;(ert-deftest test-ob-lob/call-with-header-arguments ()
-;  "Test the evaluation of a library of babel #+call: line."
-;  (org-test-at-id "fab7e291-fde6-45fc-bf6e-a485b8bca2f0"
-;    (move-beginning-of-line 1)
-;    (forward-line 6)
-;    (message (buffer-substring (point-at-bol) (point-at-eol)))
-;    (should (string= "testing" (org-babel-lob-execute
-;				(org-babel-lob-get-info))))
-;    (forward-line 1)
-;    (should (string= "testing" (caar (org-babel-lob-execute
-;				      (org-babel-lob-get-info)))))
-;    (forward-line 1)
-;    (should (string= "testing" (org-babel-lob-execute
-;    				(org-babel-lob-get-info))))
-;    (forward-line 1)
-;    (should (string= "testing" (caar (org-babel-lob-execute
-;    				      (org-babel-lob-get-info)))))
-;    (forward-line 1)
-;    (should (string= "testing" (org-babel-lob-execute
-;				(org-babel-lob-get-info))))
-;    (forward-line 1)
-;    (should (string= "testing" (caar (org-babel-lob-execute
-;    				      (org-babel-lob-get-info)))))
-;    (forward-line 1) (beginning-of-line) (forward-char 27)
-;    (should (string= "testing" (org-babel-lob-execute
-;				(org-babel-lob-get-info))))
-;    (forward-line 1) (beginning-of-line) (forward-char 27)
-;    (should (string= "testing" (caar (org-babel-lob-execute
-;				      (org-babel-lob-get-info)))))
-;    (forward-line 1) (beginning-of-line)
-;    (should (= 4 (org-babel-lob-execute (org-babel-lob-get-info))))
-;    (forward-line 1)
-;    (should (string= "testing" (org-babel-lob-execute
-;				(org-babel-lob-get-info))))
+(ert-deftest test-ob-lob/call-with-header-arguments ()
+  "Test the evaluation of a library of babel #+call: line."
+  (org-test-at-id "fab7e291-fde6-45fc-bf6e-a485b8bca2f0"
+    (move-beginning-of-line 1)
+    (forward-line 6)
+    (message (buffer-substring (point-at-bol) (point-at-eol)))
+    (should (string= "testing" (org-babel-lob-execute
+				(org-babel-lob-get-info))))
+    (forward-line 1)
+    (should (string= "testing" (caar (org-babel-lob-execute
+				      (org-babel-lob-get-info)))))
+    (forward-line 1)
+    (should (string= "testing" (org-babel-lob-execute
+    				(org-babel-lob-get-info))))
+    (forward-line 1)
+    (should (string= "testing" (caar (org-babel-lob-execute
+    				      (org-babel-lob-get-info)))))
+    (forward-line 1)
+    (should (string= "testing" (org-babel-lob-execute
+				(org-babel-lob-get-info))))
+    (forward-line 1)
+    (should (string= "testing" (caar (org-babel-lob-execute
+    				      (org-babel-lob-get-info)))))
+    (forward-line 1) (beginning-of-line) (forward-char 27)
+    (should (string= "testing" (org-babel-lob-execute
+				(org-babel-lob-get-info))))
+    (forward-line 1) (beginning-of-line) (forward-char 27)
+    (should (string= "testing" (caar (org-babel-lob-execute
+				      (org-babel-lob-get-info)))))
+    (forward-line 1) (beginning-of-line)
+    (should (= 4 (org-babel-lob-execute (org-babel-lob-get-info))))
+    (forward-line 1)
+    (should (string= "testing" (org-babel-lob-execute
+				(org-babel-lob-get-info))))))
 ;    (forward-line 1)
 ;    (should (string= "123" (org-babel-lob-execute
 ;					    (org-babel-lob-get-info))))
