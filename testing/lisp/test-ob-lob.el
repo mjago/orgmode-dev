@@ -77,25 +77,25 @@
       (with-temp-buffer
 	(insert html) (goto-char (point-min))
 	;; 0 should be on a line by itself
-	(should (re-search-forward "0" nil t))
-	(should (string= "0" (buffer-substring (point-at-bol) (point-at-eol))))
+;	(should (re-search-forward "0" nil t))
+;	(should (string= "0" (buffer-substring (point-at-bol) (point-at-eol))))
 	;; 2 should be in <code> tags
-	(should (re-search-forward "2" nil t))
-	(should (re-search-forward (regexp-quote "</code>") (point-at-eol) t))
-	(should (re-search-backward (regexp-quote "<code>") (point-at-bol) t))))))
-;	;; 4 should not be exported
-;	(should (not (re-search-forward "4" nil t)))
-;	;; 6 should also be inline
-;	(should (re-search-forward "6" nil t))
+;	(should (re-search-forward "2" nil t))
 ;	(should (re-search-forward (regexp-quote "</code>") (point-at-eol) t))
-;	(should (re-search-backward (regexp-quote "<code>") (point-at-bol) t))
-;	;; 8 should not be quoted
-;	(should (re-search-forward "8" nil t))
-;	(should (not (= ?= (char-after (point)))))
-;	(should (not (= ?= (char-before (- (point) 1)))))
-;	;; 10 should export
-;	(should (re-search-forward "10" nil t))))))
-;
+;	(should (re-search-backward (regexp-quote "<code>") (point-at-bol) t))))))
+	;; 4 should not be exported
+	(should (not (re-search-forward "4" nil t)))
+	;; 6 should also be inline
+	(should (re-search-forward "6" nil t))
+	(should (re-search-forward (regexp-quote "</code>") (point-at-eol) t))
+	(should (re-search-backward (regexp-quote "<code>") (point-at-bol) t))
+	;; 8 should not be quoted
+	(should (re-search-forward "8" nil t))
+	(should (not (= ?= (char-after (point)))))
+	(should (not (= ?= (char-before (- (point) 1)))))
+	;; 10 should export
+	(should (re-search-forward "10" nil t))))))
+
 (provide 'test-ob-lob)
 
 ;;; test-ob-lob.el ends here
